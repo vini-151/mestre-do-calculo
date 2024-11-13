@@ -1,9 +1,9 @@
 package View;
 
-import View.Cadastro;
+import View.*;
 
 public class Front {
     public static void main(String[] args) {
-        Cadastro c = new Cadastro();
+        Cadastro cadastro = new Cadastro();
     }
 }
