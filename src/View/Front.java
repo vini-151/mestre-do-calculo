@@ -1,6 +1,9 @@
 package View;
 
+import View.Cadastro;
+
 public class Front {
-    String name;
-    String color;
+    public static void main(String[] args) {
+        Cadastro c = new Cadastro();
+    }
 }
