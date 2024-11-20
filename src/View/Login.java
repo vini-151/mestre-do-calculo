@@ -138,8 +138,20 @@ public class Login extends JFrame {
             int res=JOptionPane.showConfirmDialog(null, "deseja salvar?", "Cadastro", JOptionPane.YES_NO_OPTION);
             if(res == JOptionPane.YES_OPTION){
                 String nome = fieldNome.getText(); //salva o nome inserido na variável
-                String senha = Arrays.toString(fieldSenha.getPassword());
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                String senha = String.copyValueOf(fieldSenha.getPassword());
+
+                System.out.println(nome);
+                System.out.println(senha);
+
+                if(nome.equals("Vini") && senha.equals("123")){
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                    this.dispose();
+                    EntregaDeAtividade teste = new EntregaDeAtividade();
+                    teste.setUsername(nome);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Login inválido");
+                }
+
             }
 
         });
