@@ -93,7 +93,4 @@ public class ExemploJDialog extends JFrame {
         dialog.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(ExemploJDialog::new);
-    }
 }

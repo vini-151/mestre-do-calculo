@@ -50,7 +50,7 @@ public class EntregaDeAtividade extends JFrame {
         gbc.insets = new Insets(10, 0, 3, 0);
         panel.add(labelNumeroExercicio, gbc);
 
-        JLabel labelQuestao = new JLabel("<html>Quem não sei o que dos paranauê muito doidão...</html>", SwingConstants.LEFT);
+        JLabel labelQuestao = new JLabel("<html>Seja f(x) = e²×. Qual é a derivada da função?</html>", SwingConstants.LEFT);
         labelQuestao.setFont(new Font("Roboto", Font.PLAIN, 20));
         gbc.gridy = 3;
         gbc.insets = new Insets(10, 0, 50, 0);
