@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Home extends JFrame {
+public class Configs extends JFrame {
 
-    public Home() {
-        super("Home Mestre do Calculo");
+    public Configs() {
+        super("Configurações Mestre do Calculo");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 400);
         this.setLayout(new BorderLayout());
@@ -23,7 +23,7 @@ public class Home extends JFrame {
 
         configMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Configs configs = new Configs();
+
             }
         });
 
@@ -42,24 +42,12 @@ public class Home extends JFrame {
 
         this.setJMenuBar(menuBar);
 
-        JLabel welcomeLabel = new JLabel("Bem-vindo ao Mestre do Calculo", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("Configurações", SwingConstants.LEFT);
         welcomeLabel.setFont(new Font("Roboto", Font.BOLD, 24));
-
-        JTextArea descriptionArea = new JTextArea("É um cursinho online especializado em disciplinas de exatas do nível superior, como Cálculo 1, Cálculo 2, Cálculo 3, Física 1, Física 2 e Física 3");
-        descriptionArea.setFont(new Font("Roboto", Font.PLAIN, 16));
-        descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setLineWrap(true);
-        descriptionArea.setOpaque(true);
-        descriptionArea.setBackground(new Color(245, 245, 245)); // Cor de fundo suave
-        descriptionArea.setEditable(false);
-        descriptionArea.setFocusable(false);
-        descriptionArea.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200), 1)); // Borda suave
-        descriptionArea.setMargin(new Insets(10, 10, 10, 10));
 
         JPanel northPanel = new JPanel();
         northPanel.setLayout(new GridLayout(2, 1, 10, 10));
         northPanel.add(welcomeLabel);
-        northPanel.add(descriptionArea);
 
         this.add(northPanel, BorderLayout.NORTH);
 
@@ -70,23 +58,29 @@ public class Home extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(4, 1, 10, 10));
 
-        JButton cursosButton = new JButton("Cursos");
-        cursosButton.setFont(new Font("Roboto", Font.BOLD, 20));
-        cursosButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListaDeCursos cursos = new ListaDeCursos();
-            }
-        });
-        mainPanel.add(cursosButton);
+        JToggleButton emaisBtn = new JToggleButton("Mandar e-mails sobre recomendações de estudos");
+        emaisBtn.setFont(new Font("Roboto", Font.BOLD, 20));
 
-        JButton materialButton = new JButton("Acesso as Atividades");
-        materialButton.setFont(new Font("Roboto", Font.BOLD, 20));
-        materialButton.addActionListener(new ActionListener() {
+        emaisBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EntregaDeAtividade atividade = new EntregaDeAtividade();
+                if (emaisBtn.isSelected()) {
+                    System.out.println("Usuário quer receber e-mails");
+                }else{
+                    System.out.println("Usuário não quer receber e-mails");
+                }
             }
         });
-        mainPanel.add(materialButton);
+        mainPanel.add(emaisBtn);
+
+        JButton concluirBtn = new JButton(" Concluir");
+        concluirBtn.setFont(new Font("Roboto", Font.BOLD, 20));
+
+        concluirBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        mainPanel.add(concluirBtn);
 
 
         this.add(mainPanel, BorderLayout.CENTER);
@@ -95,4 +89,5 @@ public class Home extends JFrame {
         this.setVisible(true);
     }
 }
+
 

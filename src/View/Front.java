@@ -2,6 +2,6 @@ package View;
 
 public class Front {
     public static void main(String[] args) {
-        Login appStart = new Login();
+        Login asd =  new Login();
     }
 }

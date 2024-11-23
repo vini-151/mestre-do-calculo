@@ -56,8 +56,7 @@ public class Login extends JFrame {
         this.add(labelInicial, gbc);
 
 
-        ImageIcon backgroundIcon = new ImageIcon("bg.jpg"); // Caminho da sua imagem
-        JLabel backgroundLabel = new JLabel(backgroundIcon);
+
 
 
 
@@ -187,7 +186,7 @@ public class Login extends JFrame {
 
 
 
-    private void cadastro() {
+    public void cadastro() {
         // Criar o JDialog
         JDialog dialog = new JDialog(this, "Seleção de Atividades", true);
         dialog.setSize(400, 300);

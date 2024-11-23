@@ -33,7 +33,7 @@ public class EntregaDeAtividade extends JFrame {
 
         configMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Configurações clicadas!");
+                Configs configs = new Configs();
             }
         });
 
@@ -118,7 +118,7 @@ public class EntregaDeAtividade extends JFrame {
         panel.add(opcao4, gbc);
 
         // Botão para exibir a seleção
-        JButton btnSelecionar = new JButton("Mostrar Seleção");
+        JButton btnSelecionar = new JButton("Responder");
         gbc.gridy = 8;
         gbc.gridwidth = 2;
         panel.add(btnSelecionar, gbc);
@@ -128,6 +128,7 @@ public class EntregaDeAtividade extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (opcao1.isSelected()) {
                     JOptionPane.showMessageDialog(null, "Você acertou!");
+                    avalieQuestao();
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Você errou, tente novamente!");
@@ -151,4 +152,73 @@ public class EntregaDeAtividade extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
+
+    private void avalieQuestao() {
+        final String[] avaliacao = {""};
+
+
+        // Criar o JDialog
+        JDialog dialog = new JDialog(this, "Avalie a questão", true);
+        dialog.setSize(600, 600);
+        dialog.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+
+        JLabel welcomeLabel = new JLabel("Avalie essa questão e nos ajude a melhorar!", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Roboto", Font.BOLD, 24));
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 5;
+        dialog.add(welcomeLabel, gbc);
+
+
+
+
+
+        JLabel label = new JLabel("Selecione uma opção:");
+        dialog.add(label);
+
+        // Criando um JComboBox com opções
+        String[] opcoes = {"Ruim", "Regular", "Bom", "Ótimo"};
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 5;
+        JComboBox<String> comboBoxAvaliacao = new JComboBox<>(opcoes);
+
+
+        // Adicionando evento ao JComboBox
+        comboBoxAvaliacao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String opcaoSelecionada = (String) comboBoxAvaliacao.getSelectedItem();
+                avaliacao[0] = opcaoSelecionada;
+                JOptionPane.showMessageDialog(dialog, "Você selecionou: " + opcaoSelecionada);
+            }
+        });
+
+        // Adicionando o JComboBox ao JFrame
+        dialog.add(comboBoxAvaliacao, gbc);
+
+        JButton btnConcluirAvaliacao = new JButton("Concluir");
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        dialog.add(btnConcluirAvaliacao, gbc);
+
+        btnConcluirAvaliacao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Usuário avaliou a questão como: " + avaliacao[0]);
+                dispose();
+            }
+        });
+
+
+
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }
+
+
+
 }
