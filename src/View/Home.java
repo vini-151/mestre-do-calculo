@@ -76,7 +76,13 @@ public class Home extends JFrame {
 
         JButton materialButton = new JButton("Acesso as Atividades");
         materialButton.setFont(new Font("Roboto", Font.BOLD, 20));
+        materialButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                EntregaDeAtividade atividade = new EntregaDeAtividade();
+            }
+        });
         mainPanel.add(materialButton);
+
 
         this.add(mainPanel, BorderLayout.CENTER);
 

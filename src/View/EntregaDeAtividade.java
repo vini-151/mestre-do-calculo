@@ -7,16 +7,6 @@ import java.awt.event.ActionListener;
 
 public class EntregaDeAtividade extends JFrame {
 
-    String Username;
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username) {
-        this.Username = username;
-    }
-
     public EntregaDeAtividade() {
         super("Entrega de Atividade");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,8 +19,53 @@ public class EntregaDeAtividade extends JFrame {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
+
+
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu optionsMenu = new JMenu("Opções");
+
+        JMenuItem configMenuItem = new JMenuItem("Configuração");
+        JMenuItem voltarMeuItem = new JMenuItem("Voltar");
+        JMenuItem exitMenuItem = new JMenuItem("Sair");
+
+
+        configMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Configurações clicadas!");
+            }
+        });
+
+        voltarMeuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+
+        exitMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Ação para a opção "Sair"
+                System.exit(0);
+            }
+        });
+
+        optionsMenu.add(configMenuItem);
+        optionsMenu.add(voltarMeuItem);
+        optionsMenu.add(exitMenuItem);
+
+
+        menuBar.add(optionsMenu);
+
+        this.setJMenuBar(menuBar);
+
+
+
+
+
         // Adicionar componentes ao painel principal
-        JLabel labelInicial = new JLabel("Bem vindo, " + this.Username, SwingConstants.CENTER);
+        JLabel labelInicial = new JLabel("Atividade:", SwingConstants.CENTER);
         labelInicial.setFont(new Font("Roboto", Font.BOLD, 30));
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -93,6 +128,7 @@ public class EntregaDeAtividade extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (opcao1.isSelected()) {
                     JOptionPane.showMessageDialog(null, "Você acertou!");
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Você errou, tente novamente!");
                 }
